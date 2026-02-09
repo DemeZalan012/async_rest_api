@@ -2,8 +2,8 @@
     "users": [
         {
             "firstName": "John",
-            "lastName": "Doe",
-        }
+            "lastName": "Doe"
+        },
         {
             "firstName": "Jane",
             "lastName": "Doe"

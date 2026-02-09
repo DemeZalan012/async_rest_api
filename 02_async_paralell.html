@@ -17,12 +17,29 @@
         async function serial(){
             const a  = await resolve(1);
             const b  = await resolve(2);
-            return a + b;
+            const c = await resolve(3);
+            return a + b + c;
         }
 
-        console.log(await serial());
-        serial().then(console.log);
-        
+        async function parallel(){
+            const promiseA = resolve(10);
+            const promiseB = resolve(20);
+            const promiseC = resolve(30);
+            return (await promiseA) + (await promiseB) + (await promiseC);
+        }
+
+        async function executionTime(func){
+            const start = performance.now();
+            await func();
+            const end = performance.now();
+            return end - start;
+
+        }
+
+        //serial().then(console.log);
+        //parallel().then(console.log);
+        executionTime(serial).then(console.log);
+        executionTime(parallel).then(console.log);
 
     </script>
 

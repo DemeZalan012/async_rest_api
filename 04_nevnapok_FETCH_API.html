@@ -18,7 +18,7 @@
 
         <button type="submit">Keresés</button>
     </form>
-
+    
     <script>
          async function nevnapok() {
             const response = await
@@ -30,8 +30,12 @@
 
         document.getElementById("nevnap_lekeres").addEventListener("click", nevnapok);
 
-        async function nevnapok() {
-            fetch("https://nameday.abalin.net/api/V2/today", {
+        async function nevnapPost(nap, honap) {
+            const data = {
+                "day": nap,
+                "month": honap
+            };
+            const response = await fetch("https://nameday.abalin.net/api/V2/today", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -62,10 +66,7 @@
             const honap = document.getElementById("honap").value;
 
             console.log(nap, honap);
-                data = {
-                    "day": nap,
-                    "month": honap
-                }
+            nevnapPost(nap, honap);
         }
 
         document.getElementById("datum_form").addEventListener("submit", nevnapmegjelenites)
